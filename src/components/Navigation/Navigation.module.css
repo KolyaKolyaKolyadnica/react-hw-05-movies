@@ -1,0 +1,23 @@
+.list {
+  display: flex;
+}
+.listItem {
+  padding-right: 20px;
+  list-style: none;
+  text-decoration: none;
+  color: black;
+}
+.link {
+  padding: 0 10px;
+  list-style: none;
+  text-decoration: none;
+  color: black;
+}
+
+.activeLink {
+  padding: 0 10px;
+  list-style: none;
+  text-decoration: none;
+  outline: 1px solid #000;
+  border-radius: 15px;
+}

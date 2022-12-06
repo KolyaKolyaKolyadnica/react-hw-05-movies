@@ -1,0 +1,23 @@
+.container {
+  border: 1px solid #000;
+  padding: 0 40px;
+}
+.title {
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+.listItem {
+  list-style: none;
+  /* list-style-position: inside; */
+  width: auto;
+  display: inline;
+
+  outline: 1px solid #000;
+  margin-bottom: 5px;
+}
+.listItemText {
+  cursor: pointer;
+}
