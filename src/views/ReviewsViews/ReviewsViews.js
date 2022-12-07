@@ -13,12 +13,6 @@ function ReviewsViews({ test }) {
       .catch(err => setError(err));
   }, []);
 
-  useEffect(() => {
-    if (!reviews) return;
-
-    console.log(reviews.results[0].content);
-    // console.log('reviews.results', reviews.results);
-  }, [reviews]);
   return (
     <>
       {reviews && (

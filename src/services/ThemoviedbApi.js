@@ -42,6 +42,21 @@ class ThemoviedbApi {
       }
     );
   }
+
+  // https://api.themoviedb.org/3/credit/{credit_id}?api_key=<<api_key>>
+  fetchCastById(id) {
+    return fetch(`${this.URL}/3/credit/${id}?api_key=${this.KEY}`).then(
+      response => {
+        if (response.ok) {
+          return response.json();
+        }
+
+        return Promise.reject(
+          new Error('Ошибка. Почему то не смог найти актёров.')
+        );
+      }
+    );
+  }
 }
 
 export default ThemoviedbApi;
