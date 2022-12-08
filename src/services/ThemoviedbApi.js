@@ -43,9 +43,8 @@ class ThemoviedbApi {
     );
   }
 
-  // https://api.themoviedb.org/3/credit/{credit_id}?api_key=<<api_key>>
   fetchCastById(id) {
-    return fetch(`${this.URL}/3/credit/${id}?api_key=${this.KEY}`).then(
+    return fetch(`${this.URL}/3/movie/${id}/credits?api_key=${this.KEY}`).then(
       response => {
         if (response.ok) {
           return response.json();
@@ -57,7 +56,20 @@ class ThemoviedbApi {
       }
     );
   }
+
+  fetchMovieByQuery(query) {
+    return fetch(
+      `${this.URL}/3/search/movie?api_key=${this.KEY}&query=${query}`
+    ).then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+
+      return Promise.reject(
+        new Error('Ошибка. Почему то не смог найти фильмы.')
+      );
+    });
+  }
 }
 
 export default ThemoviedbApi;
-// https://api.themoviedb.org/3/movie/550?api_key=63fcefaaeb569f05e001a1d867f25d51

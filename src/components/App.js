@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useParams } from 'react-router-dom';
 
 import Navigation from './Navigation/Navigation';
 import HomeViews from '../views/HomeViews/HomeViews';

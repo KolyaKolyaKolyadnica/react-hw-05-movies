@@ -24,7 +24,7 @@ function MovieViews() {
         <div className={style.container}>
           <div className={style.mainInfo}>
             <img
-              src={`https://image.tmdb.org/t/p/w500${currentMovie.poster_path}`}
+              src={`https://image.tmdb.org/t/p/original${currentMovie.poster_path}`}
               alt={currentMovie.name}
             />
 
@@ -53,6 +53,7 @@ function MovieViews() {
               <li className={style.additionalInformationItem}>
                 <NavLink
                   to={`/movies/${movieId}/cast`}
+                  test={movieId}
                   className={({ isActive }) =>
                     isActive ? style.activeLink : style.link
                   }
