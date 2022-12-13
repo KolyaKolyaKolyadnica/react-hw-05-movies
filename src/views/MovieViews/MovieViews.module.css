@@ -5,10 +5,13 @@
   display: flex;
 }
 .mainInfo > img {
-  width: 300px;
+  height: 450px;
+  width: auto;
 }
+
 .infoText {
   padding: 40px;
+  min-width: 400px;
 }
 .genreList {
   padding: 0;

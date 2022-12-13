@@ -22,10 +22,12 @@ function MovieViews() {
     <>
       {currentMovie && (
         <div className={style.container}>
+          <button onClick={() => window.history.back()}>Go Back</button>
           <div className={style.mainInfo}>
             <img
               src={`https://image.tmdb.org/t/p/original${currentMovie.poster_path}`}
               alt={currentMovie.name}
+              className={style.movieImg}
             />
 
             <div className={style.infoText}>

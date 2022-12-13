@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import style from './MoviesViews.module.css';
+// import CastViews from '../CastViews/CastViews';
+// import ReviewsViews from '../ReviewsViews/ReviewsViews';
 
 import ThemoviedbApi from '../../services/ThemoviedbApi';
 const api = new ThemoviedbApi({});
