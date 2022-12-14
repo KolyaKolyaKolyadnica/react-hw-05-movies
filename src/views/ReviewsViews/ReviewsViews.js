@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
+import ReviewsListItem from 'components/ReviewsListItem';
 import ThemoviedbApi from 'services/ThemoviedbApi';
 const api = new ThemoviedbApi({});
 
-function ReviewsViews({ test }) {
+function ReviewsViews() {
   const [reviews, setReviews] = useState(null);
   const [error, setError] = useState(null);
 
@@ -17,19 +18,16 @@ function ReviewsViews({ test }) {
       .catch(err => setError(err));
   }, []);
 
+  const listItem =
+    reviews &&
+    reviews.results.map(review => {
+      return <ReviewsListItem key={review.id} review={review} />;
+    });
+
   return (
     <>
-      {reviews && reviews.results.length !== 0 ? (
-        <ul>
-          {reviews.results.map(review => {
-            return (
-              <li key={review.id}>
-                <h4>{review.author}</h4>
-                <p>{review.content}</p>
-              </li>
-            );
-          })}
-        </ul>
+      {reviews?.results?.length > 0 ? (
+        <ul>{listItem}</ul>
       ) : (
         <p>There are no reviews unfortunately.</p>
       )}

@@ -1,0 +1,12 @@
+.listItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 150px;
+  padding: 10px;
+  text-align: center;
+}
+
+.actorFoto {
+  width: 150px;
+}

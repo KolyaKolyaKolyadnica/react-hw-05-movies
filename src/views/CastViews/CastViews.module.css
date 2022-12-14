@@ -12,21 +12,3 @@
   grid-template-columns: repeat(auto-fill, 150px);
   grid-gap: 20px;
 }
-
-.listItem {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 150px;
-  padding: 10px;
-  text-align: center;
-}
-
-.lastListItem {
-  display: flex;
-  flex-grow: 1;
-}
-
-.actorFoto {
-  width: 150px;
-}
