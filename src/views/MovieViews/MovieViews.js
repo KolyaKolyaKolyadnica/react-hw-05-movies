@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, NavLink, Outlet } from 'react-router-dom';
+import { useParams, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import style from './MovieViews.module.css';
 
 import ThemoviedbApi from '../../services/ThemoviedbApi';
@@ -10,6 +10,7 @@ function MovieViews() {
   const [error, setError] = useState(null);
 
   const { movieId } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     api
@@ -22,7 +23,13 @@ function MovieViews() {
     <>
       {currentMovie && (
         <div className={style.container}>
-          <button onClick={() => window.history.back()}>Go Back</button>
+          {/* Bad approach? */}
+          <button onClick={() => window.history.back()}>
+            Go Back (window.history)
+          </button>
+          {/* Good approach? */}
+          <button onClick={() => navigate(-1)}>Go Back (useNavigate)</button>
+
           <div className={style.mainInfo}>
             <img
               src={`https://image.tmdb.org/t/p/original${currentMovie.poster_path}`}

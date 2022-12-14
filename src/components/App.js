@@ -22,10 +22,10 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<Navigation />}>
         <Route index element={<HomeViews trendsMovies={trendMovies} />} />
-        <Route
+        {/* <Route
           path="react-hw-05-movies"
           element={<HomeViews trendsMovies={trendMovies} />}
-        />
+        /> */}
         <Route path="movies" element={<MoviesViews />} />
         <Route path="movies/:movieId" element={<MovieViews />}>
           <Route path="cast" element={<CastViews />} />

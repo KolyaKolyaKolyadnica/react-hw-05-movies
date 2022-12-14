@@ -34,8 +34,6 @@ function ReviewsViews({ test }) {
         <p>There are no reviews unfortunately.</p>
       )}
 
-      {/* {reviews.results.length > 0 && <div>dasdasdasas</div>} */}
-
       {error && <div>ERROR! {error.message}</div>}
     </>
   );
