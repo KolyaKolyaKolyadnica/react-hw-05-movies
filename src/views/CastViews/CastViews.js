@@ -21,7 +21,7 @@ function CastViews() {
 
   return (
     <>
-      {cast && (
+      {cast && cast.length !== 0 ? (
         <div className={style.container}>
           <ul className={style.list}>
             {cast.map(cast => {
@@ -47,6 +47,8 @@ function CastViews() {
             })}
           </ul>
         </div>
+      ) : (
+        <p>Unfortunately, there is no cast.</p>
       )}
 
       {error && <div>ERROR! {error.message}</div>}

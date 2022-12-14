@@ -19,7 +19,7 @@ function ReviewsViews({ test }) {
 
   return (
     <>
-      {reviews && (
+      {reviews && reviews.results.length !== 0 ? (
         <ul>
           {reviews.results.map(review => {
             return (
@@ -30,7 +30,11 @@ function ReviewsViews({ test }) {
             );
           })}
         </ul>
+      ) : (
+        <p>There are no reviews unfortunately.</p>
       )}
+
+      {/* {reviews.results.length > 0 && <div>dasdasdasas</div>} */}
 
       {error && <div>ERROR! {error.message}</div>}
     </>

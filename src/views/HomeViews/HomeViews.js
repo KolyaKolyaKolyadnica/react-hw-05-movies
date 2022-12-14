@@ -14,7 +14,6 @@ function HomeViews({ trendsMovies }) {
               <Link to={`/movies/${trendMovie.id}`}>
                 {trendMovie.name ? trendMovie.name : trendMovie.title}
               </Link>
-              {/* <p className={style.listItemText}></p> */}
             </li>
           );
         })}

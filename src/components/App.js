@@ -13,7 +13,6 @@ const api = new ThemoviedbApi({});
 
 export const App = () => {
   const [trendMovies, setTrendMovies] = useState([]);
-  // console.log(trendMovies);
 
   useEffect(() => {
     api.fetchTrend().then(newTrends => setTrendMovies(newTrends.results));
