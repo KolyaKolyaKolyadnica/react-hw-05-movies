@@ -8,7 +8,6 @@ function Navigation() {
         <ul className={style.list}>
           <li className={style.listItem}>
             <NavLink
-              // react-hw-05-movies
               to="/"
               className={({ isActive }) =>
                 isActive ? style.activeLink : style.link

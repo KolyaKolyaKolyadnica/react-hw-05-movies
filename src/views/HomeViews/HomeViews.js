@@ -11,7 +11,7 @@ function HomeViews({ trendsMovies }) {
         {trendsMovies.map(trendMovie => {
           return (
             <li key={trendMovie.id} className={style.listItem}>
-              <Link to={`/movies/${trendMovie.id}`}>
+              <Link to={`/movies/${trendMovie.id}`} state={pathname}>
                 {trendMovie.name ? trendMovie.name : trendMovie.title}
               </Link>
             </li>

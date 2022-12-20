@@ -1,6 +1,4 @@
 export default function ReviewsListItem({ review }) {
-  console.log(review);
-
   return (
     <li>
       <h4>{review.author}</h4>

@@ -1,5 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useParams, NavLink, Outlet, useNavigate } from 'react-router-dom';
+import {
+  useParams,
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
 import style from './MovieViews.module.css';
 
 import ThemoviedbApi from '../../services/ThemoviedbApi';
@@ -10,6 +17,7 @@ function MovieViews() {
   const [error, setError] = useState(null);
 
   const { movieId } = useParams();
+  const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,6 +37,13 @@ function MovieViews() {
           </button>
           {/* Good approach? */}
           <button onClick={() => navigate(-1)}>Go Back (useNavigate)</button>
+
+          {/* My approach (good/bad?) */}
+          <Link to={location.state}>
+            <button>
+              {location.state ? 'Go Back (Link)' : 'It`s your first page'}
+            </button>
+          </Link>
 
           <div className={style.mainInfo}>
             <img
@@ -62,7 +77,7 @@ function MovieViews() {
               <li className={style.additionalInformationItem}>
                 <NavLink
                   to={`/movies/${movieId}/cast`}
-                  test={movieId}
+                  state={location.state}
                   className={({ isActive }) =>
                     isActive ? style.activeLink : style.link
                   }
@@ -73,10 +88,10 @@ function MovieViews() {
               <li className={style.additionalInformationItem}>
                 <NavLink
                   to={`/movies/${movieId}/reviews`}
+                  state={location.state}
                   className={({ isActive }) =>
                     isActive ? style.activeLink : style.link
                   }
-                  test={movieId}
                 >
                   Reviews
                 </NavLink>
@@ -95,24 +110,3 @@ function MovieViews() {
 }
 
 export default MovieViews;
-
-// {
-// function MovieViews({ trendMovies, genresList }) {
-
-//   const getGenreNameById = () => {
-//     if (genresList.length === 0) {
-//       return [];
-//     }
-
-//     const currentMovieGenreList = genresList.genres.filter(genre =>
-//       currentMovie.genre_ids.includes(genre.id)
-//     );
-
-//     return currentMovieGenreList;
-//   };
-
-//   const itemListGenre = getGenreNameById().map(genre => (
-//     <li key={genre.id}>{genre.name}</li>
-//   ));
-
-// }

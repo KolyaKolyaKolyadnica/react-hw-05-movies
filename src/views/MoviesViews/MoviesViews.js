@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import style from './MoviesViews.module.css';
-// import CastViews from '../CastViews/CastViews';
-// import ReviewsViews from '../ReviewsViews/ReviewsViews';
 
 import ThemoviedbApi from '../../services/ThemoviedbApi';
 const api = new ThemoviedbApi({});
 
 function MoviesViews() {
-  const [query, setQuery] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get('query') || '');
   const [movies, setMovies] = useState(null);
+
+  const { pathname } = useLocation();
 
   const findMovies = e => {
     e.preventDefault();
@@ -18,6 +19,20 @@ function MoviesViews() {
       .fetchMovieByQuery(query)
       .then(dataMovies => setMovies(dataMovies.results));
   };
+
+  useEffect(() => {
+    if (!query) return;
+
+    api
+      .fetchMovieByQuery(query)
+      .then(dataMovies => setMovies(dataMovies.results));
+  }, []);
+
+  useEffect(() => {
+    if (movies === null) return;
+
+    setSearchParams({ query: query });
+  }, [movies]);
 
   return (
     <>
@@ -33,12 +48,16 @@ function MoviesViews() {
           <button type="submit">Search</button>
         </form>
       </div>
+
       {movies && (
         <ul className={style.list}>
           {movies.map(movie => {
             return (
               <li key={movie.id} className={style.listItem}>
-                <Link to={`/movies/${movie.id}`}>
+                <Link
+                  to={`${pathname}/${movie.id}`}
+                  state={`${pathname}?query=${query}`}
+                >
                   {movie.original_title ? movie.original_title : movie.title}
                 </Link>
               </li>
